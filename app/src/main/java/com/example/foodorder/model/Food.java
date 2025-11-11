@@ -11,6 +11,7 @@ public class Food {
     private String description;
     private double price;
     private String imageUrl;
+    private byte[] imageData; // Store image as byte array in database
     private String category;
     private String ingredients;
     private boolean isAvailable;
@@ -68,6 +69,14 @@ public class Food {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public byte[] getImageData() {
+        return imageData;
+    }
+
+    public void setImageData(byte[] imageData) {
+        this.imageData = imageData;
     }
 
     public String getCategory() {

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+    
+    <!-- Background Circle with Gradient Effect -->
+    <path
+        android:fillColor="@color/red_primary"
+        android:pathData="M60,5 A55,55 0 1,1 60,115 A55,55 0 1,1 60,5 Z"/>
+    
+    <!-- White Circle Background -->
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M60,15 A45,45 0 1,1 60,105 A45,45 0 1,1 60,15 Z"/>
+    
+    <!-- Stylized Food Dish Icon -->
+    <!-- Plate Base -->
+    <path
+        android:fillColor="@color/red_primary"
+        android:pathData="M35,70 Q60,75 85,70 Q85,75 60,78 Q35,75 35,70 Z"/>
+    
+    <!-- Food Item (Burger/Dome Shape) -->
+    <path
+        android:fillColor="@color/red_accent"
+        android:pathData="M45,50 Q60,35 75,50 L75,55 Q60,60 45,55 Z"/>
+    
+    <!-- Food Detail Lines -->
+    <path
+        android:fillColor="@color/red_primary"
+        android:strokeWidth="1.5"
+        android:strokeColor="@color/red_primary"
+        android:pathData="M50,52 L70,52 M48,58 L72,58"/>
+    
+    <!-- Fork Icon (Left Side) -->
+    <group android:translateX="-5" android:translateY="0">
+        <path
+            android:fillColor="@color/red_secondary"
+            android:pathData="M40,40 L40,65 L42,65 L42,40 Z M37,40 L37,50 L39,50 L39,40 Z M43,40 L43,50 L45,50 L45,40 Z"/>
+    </group>
+    
+    <!-- Spoon Icon (Right Side) -->
+    <group android:translateX="5" android:translateY="0">
+        <path
+            android:fillColor="@color/red_secondary"
+            android:pathData="M78,40 Q78,35 82,35 Q86,35 86,40 L86,45 Q84,47 82,47 Q80,47 78,45 Z M81,47 L81,65 L83,65 L83,47 Z"/>
+    </group>
+</vector>
