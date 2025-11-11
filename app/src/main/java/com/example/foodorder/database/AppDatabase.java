@@ -19,7 +19,7 @@ import com.example.foodorder.model.Order;
 import com.example.foodorder.model.Review;
 import com.example.foodorder.model.User;
 
-@Database(entities = {User.class, Food.class, CartItem.class, Order.class, Review.class, Message.class}, version = 2, exportSchema = false)
+@Database(entities = {User.class, Food.class, CartItem.class, Order.class, Review.class, Message.class}, version = 3, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase instance;
 

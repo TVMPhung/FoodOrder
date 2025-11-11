@@ -95,8 +95,39 @@ A complete Android application for food ordering built with Java, Room Database,
   - Sent/received message differentiation
   - Message timestamps
   - Keyboard-aware scrolling
+  
+### 9. **Intelligent AI Chatbot Assistant** ⭐ NEW
+- **Natural Language Understanding**:
+  - Processes customer queries using pattern matching
+  - Understands 10+ different query types
+  - Context-aware responses with helpful information
+- **Database Integration**:
+  - Comprehensive food database (database.json)
+  - 24 food items across 8 categories
+  - 2 restaurant locations (LA California, NY Manhattan)
+  - Price ranges, time ranges, ratings, and ingredients
+- **Query Types Supported**:
+  - Menu browsing and category filtering
+  - Fast food recommendations (≤10 min preparation)
+  - Healthy food suggestions (salads, veggie options, grilled items)
+  - Location information with addresses and hours
+  - Best food recommendations (highly-rated items)
+  - Price-based filtering (budget-friendly or premium)
+  - Specific food item details
+  - Help and general assistance
+- **Smart Features**:
+  - Automatic welcome message on first use
+  - Emoji-rich responses for better UX
+  - Filtered results by category, price, time, location
+  - Highlights "Best Food" items
+  - Shows preparation time and availability
+- **User Experience**:
+  - Natural conversation flow
+  - Delayed responses for realistic feel
+  - Persistent chat history
+  - Easy-to-read structured responses
 
-### 9. **Location Services**
+### 10. **Location Services**
 - **Map Screen**:
   - Store information display:
     - Address
@@ -117,10 +148,11 @@ A complete Android application for food ordering built with Java, Room Database,
 ### Project Structure
 ```
 app/src/main/java/com/example/foodorder/
-├── model/              # Entity classes (6 entities)
+├── model/              # Entity classes (8 classes: 6 entities + Category + Location)
 ├── dao/                # Data Access Objects (6 DAOs)
 ├── database/           # AppDatabase singleton
 ├── repository/         # Repository classes (6 repositories)
+├── service/            # Business logic (ChatbotService)
 ├── ui/
 │   ├── auth/          # Login & SignUp activities
 │   ├── food/          # Food list & detail activities
@@ -131,7 +163,10 @@ app/src/main/java/com/example/foodorder/
 │   ├── chat/          # Chat activity
 │   └── location/      # Map activity
 ├── adapter/           # RecyclerView adapters (5 adapters)
-└── utils/             # Utility classes (SessionManager, ValidationUtils, NotificationHelper)
+└── utils/             # Utility classes (SessionManager, ValidationUtils, NotificationHelper, DatabaseImportHelper)
+
+app/src/main/assets/
+└── database.json      # Comprehensive food database with 24 items, categories, locations
 ```
 
 ### Dependencies
@@ -144,13 +179,17 @@ app/src/main/java/com/example/foodorder/
 
 ## Key Files
 
-### Java Files (38 total)
-- **Models**: User, Food, CartItem, Order, Review, Message
-- **DAOs**: UserDao, FoodDao, CartItemDao, OrderDao, ReviewDao, MessageDao
+### Java Files (43 total)
+- **Models**: User, Food, CartItem, Order, Review, Message, Category, Location (8 classes)
+- **DAOs**: UserDao, FoodDao, CartItemDao, OrderDao, ReviewDao, MessageDao (6 classes)
 - **Repositories**: 6 repository classes
+- **Services**: ChatbotService (1 class)
 - **Activities**: 11 activities
 - **Adapters**: 5 RecyclerView adapters
-- **Utilities**: 3 utility classes
+- **Utilities**: 4 utility classes (SessionManager, ValidationUtils, NotificationHelper, DatabaseImportHelper)
+
+### Data Files (1 total)
+- **database.json**: Comprehensive food database with 24 items, 8 categories, 2 locations, price ranges, and time ranges
 
 ### Layout Files (16 total)
 - Activity layouts for all screens
@@ -192,15 +231,40 @@ app/src/main/java/com/example/foodorder/
 - Repository pattern for clean architecture
 - Asynchronous database operations
 
-## Sample Data
-The app includes sample food items that are automatically populated on first run:
-1. Margherita Pizza - $12.99
-2. Cheeseburger - $9.99
-3. Caesar Salad - $7.99
-4. Spaghetti Carbonara - $11.99
-5. Chicken Wings - $8.99
+### AI-Powered Features ⭐ NEW
+- Intelligent chatbot with natural language understanding
+- Context-aware responses
+- Smart filtering and recommendations
+- Comprehensive food database integration
+- Real-time query processing
+
+## Sample Data / Food Database ⭐ UPDATED
+The app now includes a comprehensive food database (database.json) with 24 items:
+
+**Pizza**: Margherita Pizza, Pepperoni Pizza, Veggie Extravaganza
+**Burgers**: Cheeseburger Deluxe, Bacon Burger, Veggie Burger
+**Chicken**: Grilled Chicken Breast, Chicken Wings, Chicken Nuggets
+**Sushi**: California Roll, Salmon Nigiri, Veggie Roll
+**Meat**: Ribeye Steak, BBQ Ribs
+**Hotdog**: Classic Hotdog, Chili Cheese Dog
+**Drinks**: Fresh Orange Juice, Iced Coffee, Smoothie Bowl
+**More**: Caesar Salad, Quinoa Salad Bowl, Vegetarian Pad Thai, French Fries, Onion Rings
+
+Each item includes:
+- Detailed description
+- Price range ($3.99 - $35.99)
+- Preparation time (2-45 minutes)
+- Rating (4.2 - 4.9 stars)
+- Location availability (LA California or NY Manhattan)
+- Complete ingredient list
+- Category and "Best Food" recommendations
 
 ## Future Enhancements
+- Advanced NLP/ML for better chatbot understanding
+- Voice input for chatbot queries
+- Image display in chat responses
+- Order directly from chatbot
+- Personalized recommendations based on history
 - Google Maps API integration for real map view
 - Real-time chat with backend integration
 - Push notifications for order updates
@@ -221,6 +285,40 @@ The app includes sample food items that are automatically populated on first run
 - All data is stored locally on the device
 - Google Maps integration requires API key (placeholder included)
 - Notification functionality requires Android 13+ for runtime permission
+- Chatbot uses local JSON database (no internet required for queries)
+- Database version 3 with schema updates for chatbot functionality
+
+## Using the Chatbot Assistant 🤖
+
+The intelligent chatbot can help with various queries:
+
+**Example Queries:**
+- "Hello" or "Hi" - Get a friendly welcome
+- "Show me the menu" - Browse complete menu
+- "What fast food do you have?" - Items ready in ≤10 minutes
+- "I want something healthy" - Healthy food recommendations
+- "Where are your locations?" - Restaurant addresses and hours
+- "What do you recommend?" - Best and highly-rated items
+- "Show me cheap options" - Budget-friendly choices under $10
+- "Tell me about the ribeye steak" - Specific item details
+- "What burgers do you have?" - Category-specific items
+
+**Features:**
+- Natural language understanding
+- Smart recommendations
+- Detailed food information
+- Location details
+- Price and time filtering
+- Emoji-rich responses
+
+See [CHATBOT_GUIDE.md](CHATBOT_GUIDE.md) for comprehensive documentation.
+
+## Documentation
+- [README.md](README.md) - This file, project overview
+- [CHATBOT_GUIDE.md](CHATBOT_GUIDE.md) - Chatbot implementation guide
+- [DATABASE_IMPORT_GUIDE.md](DATABASE_IMPORT_GUIDE.md) - Database import usage
+- [THEME_GUIDE.md](THEME_GUIDE.md) - Theme implementation guide
+- [IMPLEMENTATION_SUMMARY.md](IMPLEMENTATION_SUMMARY.md) - Implementation summary
 
 ## License
 This is a demonstration project for educational purposes.
