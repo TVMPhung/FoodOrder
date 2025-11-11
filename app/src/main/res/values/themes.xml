@@ -1,8 +1,29 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!-- Base application theme with Red color scheme. -->
     <style name="Base.Theme.FoodOrder" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Primary brand color - Red -->
+        <item name="colorPrimary">@color/red_primary</item>
+        <item name="colorPrimaryVariant">@color/red_primary_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        
+        <!-- Secondary brand color - Red accent -->
+        <item name="colorSecondary">@color/red_accent</item>
+        <item name="colorSecondaryVariant">@color/red_secondary</item>
+        <item name="colorOnSecondary">@color/white</item>
+        
+        <!-- Background colors -->
+        <item name="android:colorBackground">@color/background_light</item>
+        <item name="colorSurface">@color/surface_light</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">@color/red_primary_dark</item>
+        
+        <!-- Action bar / Toolbar color -->
+        <item name="colorPrimaryDark">@color/red_primary_dark</item>
+        
+        <!-- FAB color -->
+        <item name="colorAccent">@color/red_accent</item>
     </style>
 
     <style name="Theme.FoodOrder" parent="Base.Theme.FoodOrder" />

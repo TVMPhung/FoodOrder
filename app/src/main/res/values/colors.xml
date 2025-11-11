@@ -2,6 +2,27 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="purple_500">#6200EE</color>
-    <color name="purple_200">#BB86FC</color>
+    
+    <!-- Red Theme Colors -->
+    <color name="red_primary">#D32F2F</color>
+    <color name="red_primary_dark">#B71C1C</color>
+    <color name="red_primary_light">#EF5350</color>
+    <color name="red_accent">#FF5252</color>
+    
+    <!-- Secondary Colors -->
+    <color name="red_secondary">#C62828</color>
+    <color name="red_secondary_light">#E57373</color>
+    
+    <!-- Background and Surface Colors -->
+    <color name="background_light">#FFFFFF</color>
+    <color name="surface_light">#FAFAFA</color>
+    
+    <!-- Text Colors -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="text_on_primary">#FFFFFF</color>
+    
+    <!-- Legacy purple colors (kept for compatibility) -->
+    <color name="purple_500">#D32F2F</color>
+    <color name="purple_200">#EF5350</color>
 </resources>
