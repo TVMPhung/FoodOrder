@@ -39,6 +39,8 @@ dependencies {
     implementation libs.constraintlayout
     implementation libs.cardview
     implementation libs.recyclerview
+    implementation libs.swiperefreshlayout
+    implementation libs.coordinatorlayout
     
     // Room Database
     implementation libs.room.runtime
