@@ -1,6 +1,8 @@
 package com.example.foodorder.ui.chat;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,6 +11,7 @@ import com.example.foodorder.adapter.MessageAdapter;
 import com.example.foodorder.databinding.ActivityChatBinding;
 import com.example.foodorder.model.Message;
 import com.example.foodorder.repository.MessageRepository;
+import com.example.foodorder.service.ChatbotService;
 import com.example.foodorder.utils.SessionManager;
 
 public class ChatActivity extends AppCompatActivity {
@@ -16,6 +19,8 @@ public class ChatActivity extends AppCompatActivity {
     private MessageAdapter messageAdapter;
     private MessageRepository messageRepository;
     private SessionManager sessionManager;
+    private ChatbotService chatbotService;
+    private Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +30,16 @@ public class ChatActivity extends AppCompatActivity {
 
         messageRepository = new MessageRepository(getApplication());
         sessionManager = new SessionManager(this);
+        chatbotService = ChatbotService.getInstance(this);
+        handler = new Handler(Looper.getMainLooper());
 
         setupToolbar();
         setupRecyclerView();
         setupButtons();
         loadMessages();
+        
+        // Send welcome message if no messages exist
+        sendWelcomeMessageIfNeeded();
     }
 
     private void setupToolbar() {
@@ -64,6 +74,21 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
     }
+    
+    private void sendWelcomeMessageIfNeeded() {
+        int userId = sessionManager.getUserId();
+        messageRepository.getMessagesByUserId(userId).observe(this, messages -> {
+            if (messages == null || messages.isEmpty()) {
+                // Send welcome message from chatbot
+                handler.postDelayed(() -> {
+                    String welcomeText = "Hello! Welcome to our restaurant! 🍕 I'm your AI assistant. " +
+                            "Ask me about our menu, fast food, healthy options, locations, or anything else!";
+                    Message botMessage = new Message(userId, welcomeText, false);
+                    messageRepository.insert(botMessage);
+                }, 500);
+            }
+        });
+    }
 
     private void sendMessage() {
         String messageText = binding.etMessage.getText().toString().trim();
@@ -72,10 +97,19 @@ public class ChatActivity extends AppCompatActivity {
         }
 
         int userId = sessionManager.getUserId();
-        Message message = new Message(userId, messageText, true);
-        messageRepository.insert(message);
+        
+        // Save user message
+        Message userMessage = new Message(userId, messageText, true);
+        messageRepository.insert(userMessage);
 
         binding.etMessage.setText("");
+        
+        // Process query with chatbot and respond after a short delay
+        handler.postDelayed(() -> {
+            String response = chatbotService.processQuery(messageText);
+            Message botMessage = new Message(userId, response, false);
+            messageRepository.insert(botMessage);
+        }, 800);
     }
 
     @Override

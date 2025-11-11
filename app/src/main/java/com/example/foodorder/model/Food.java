@@ -17,6 +17,16 @@ public class Food {
     private boolean isAvailable;
     private double averageRating;
     private int reviewCount;
+    
+    // Additional fields for chatbot functionality
+    private int categoryId;
+    private int priceId;
+    private int timeId;
+    private int timeValue; // Preparation time in minutes
+    private int locationId;
+    private double star; // Rating from database
+    private String imagePath; // URL for food image
+    private boolean bestFood; // Flag for best food recommendations
 
     public Food(String name, String description, double price, String imageUrl, String category, String ingredients) {
         this.name = name;
@@ -117,5 +127,69 @@ public class Food {
 
     public void setReviewCount(int reviewCount) {
         this.reviewCount = reviewCount;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public int getPriceId() {
+        return priceId;
+    }
+
+    public void setPriceId(int priceId) {
+        this.priceId = priceId;
+    }
+
+    public int getTimeId() {
+        return timeId;
+    }
+
+    public void setTimeId(int timeId) {
+        this.timeId = timeId;
+    }
+
+    public int getTimeValue() {
+        return timeValue;
+    }
+
+    public void setTimeValue(int timeValue) {
+        this.timeValue = timeValue;
+    }
+
+    public int getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(int locationId) {
+        this.locationId = locationId;
+    }
+
+    public double getStar() {
+        return star;
+    }
+
+    public void setStar(double star) {
+        this.star = star;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public boolean isBestFood() {
+        return bestFood;
+    }
+
+    public void setBestFood(boolean bestFood) {
+        this.bestFood = bestFood;
     }
 }
